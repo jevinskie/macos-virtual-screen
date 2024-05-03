@@ -1,0 +1,10 @@
+prefix=/Users/jevin/code/remote-desktop/mac-virtual-screen/git/macos-virtual-screen/3rdparty/prefix-fmt
+exec_prefix=/Users/jevin/code/remote-desktop/mac-virtual-screen/git/macos-virtual-screen/3rdparty/prefix-fmt
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: fmt
+Description: A modern formatting library
+Version: 10.2.2
+Libs: -L${libdir} -lfmtd
+Cflags: -I${includedir}

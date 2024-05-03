@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		098F435A2BE4DB5D00F0BAC5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 098F43592BE4DB5D00F0BAC5 /* main.cpp */; };
+		098F435A2BE4DB5D00F0BAC5 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 098F43592BE4DB5D00F0BAC5 /* main.mm */; };
+		098F43612BE4DBAE00F0BAC5 /* CoreGraphics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 098F43602BE4DBAE00F0BAC5 /* CoreGraphics.xcframework */; };
+		098F43642BE4E50300F0BAC5 /* libfmtd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 098F43632BE4E4D300F0BAC5 /* libfmtd.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +26,9 @@
 
 /* Begin PBXFileReference section */
 		098F43562BE4DB5D00F0BAC5 /* macos-virtual-screen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "macos-virtual-screen"; sourceTree = BUILT_PRODUCTS_DIR; };
-		098F43592BE4DB5D00F0BAC5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		098F43592BE4DB5D00F0BAC5 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		098F43602BE4DBAE00F0BAC5 /* CoreGraphics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = CoreGraphics.xcframework; sourceTree = "<group>"; };
+		098F43632BE4E4D300F0BAC5 /* libfmtd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfmtd.a; path = "3rdparty/prefix-fmt/lib/libfmtd.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				098F43642BE4E50300F0BAC5 /* libfmtd.a in Frameworks */,
+				098F43612BE4DBAE00F0BAC5 /* CoreGraphics.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,8 +47,10 @@
 		098F434D2BE4DB5D00F0BAC5 = {
 			isa = PBXGroup;
 			children = (
+				098F43602BE4DBAE00F0BAC5 /* CoreGraphics.xcframework */,
 				098F43582BE4DB5D00F0BAC5 /* macos-virtual-screen */,
 				098F43572BE4DB5D00F0BAC5 /* Products */,
+				098F43622BE4E4D300F0BAC5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +65,17 @@
 		098F43582BE4DB5D00F0BAC5 /* macos-virtual-screen */ = {
 			isa = PBXGroup;
 			children = (
-				098F43592BE4DB5D00F0BAC5 /* main.cpp */,
+				098F43592BE4DB5D00F0BAC5 /* main.mm */,
 			);
 			path = "macos-virtual-screen";
+			sourceTree = "<group>";
+		};
+		098F43622BE4E4D300F0BAC5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				098F43632BE4E4D300F0BAC5 /* libfmtd.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				098F435A2BE4DB5D00F0BAC5 /* main.cpp in Sources */,
+				098F435A2BE4DB5D00F0BAC5 /* main.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,11 +146,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++23";
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -178,11 +195,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/3rdparty/prefix-fmt/include";
+				INSTALL_PATH = /Users/jevin/base/util/bin;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lfmt";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -191,11 +211,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++23";
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -233,10 +254,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/3rdparty/prefix-fmt/include";
+				INSTALL_PATH = /Users/jevin/base/util/bin;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lfmt";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -246,7 +271,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZK96P738ZR;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/3rdparty/prefix-fmt/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -256,7 +285,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZK96P738ZR;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/3rdparty/prefix-fmt/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

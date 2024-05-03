@@ -1,0 +1,4 @@
+module CoreGraphics [system] {
+    header "Headers/CoreGraphics.h"
+    export *
+}
