@@ -10,6 +10,7 @@
 		098F435A2BE4DB5D00F0BAC5 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 098F43592BE4DB5D00F0BAC5 /* main.mm */; };
 		098F43612BE4DBAE00F0BAC5 /* CoreGraphics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 098F43602BE4DBAE00F0BAC5 /* CoreGraphics.xcframework */; };
 		098F43642BE4E50300F0BAC5 /* libfmtd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 098F43632BE4E4D300F0BAC5 /* libfmtd.a */; };
+		098F43662BE4EA9400F0BAC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 098F43652BE4EA9400F0BAC5 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,7 @@
 		098F43592BE4DB5D00F0BAC5 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		098F43602BE4DBAE00F0BAC5 /* CoreGraphics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = CoreGraphics.xcframework; sourceTree = "<group>"; };
 		098F43632BE4E4D300F0BAC5 /* libfmtd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfmtd.a; path = "3rdparty/prefix-fmt/lib/libfmtd.a"; sourceTree = "<group>"; };
+		098F43652BE4EA9400F0BAC5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				098F43662BE4EA9400F0BAC5 /* CoreGraphics.framework in Frameworks */,
 				098F43642BE4E50300F0BAC5 /* libfmtd.a in Frameworks */,
 				098F43612BE4DBAE00F0BAC5 /* CoreGraphics.xcframework in Frameworks */,
 			);
@@ -73,6 +76,7 @@
 		098F43622BE4E4D300F0BAC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				098F43652BE4EA9400F0BAC5 /* CoreGraphics.framework */,
 				098F43632BE4E4D300F0BAC5 /* libfmtd.a */,
 			);
 			name = Frameworks;
@@ -202,7 +206,6 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-lfmt";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -261,7 +264,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-lfmt";
 				SDKROOT = macosx;
 			};
 			name = Release;

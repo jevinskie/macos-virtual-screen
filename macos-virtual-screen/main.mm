@@ -23,11 +23,11 @@ struct DisplayConfig {
     CGDisplayModeRef originalMode;
 };
 
-template <> struct fmt::formatter<DisplayConfig> {
-    // parse is inherited from formatter<string_view>.
-
-    auto format(DisplayConfig c, format_context &ctx) const;
-};
+// template <> struct fmt::formatter<DisplayConfig> {
+//     // parse is inherited from formatter<string_view>.
+//
+//     auto format(const DisplayConfig &c, format_context &ctx) const;
+// };
 
 // template <> struct fmt::formatter<DisplayConfig> {
 //     auto format(DisplayConfig &p, format_context &ctx) const {
@@ -37,8 +37,14 @@ template <> struct fmt::formatter<DisplayConfig> {
 //     }
 // };
 
-template <> auto fmt::formatter<DisplayConfig>::format(DisplayConfig c, format_context &ctx) const {
-    return fmt::format("DisplayConfigDummy", ctx);
+template <> struct fmt::formatter<DisplayConfig> {
+    template <typename ParseContext> constexpr auto parse(ParseContext &ctx) {
+        return ctx.begin();
+    }
+
+    auto format(const DisplayConfig &c, format_context &ctx) const {
+        return format_to(ctx.out(), "DisplayConfigDummy");
+    }
 };
 
 std::vector<DisplayConfig> savedConfigs;

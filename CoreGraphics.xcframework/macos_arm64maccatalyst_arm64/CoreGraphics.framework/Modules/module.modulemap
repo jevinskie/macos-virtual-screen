@@ -1,4 +1,4 @@
-module CoreGraphics [system] {
+module CoreGraphics [system] [extern_c] {
     header "Headers/CoreGraphics.h"
     export *
 }
